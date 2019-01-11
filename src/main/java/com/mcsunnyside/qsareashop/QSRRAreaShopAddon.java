@@ -1,4 +1,4 @@
-package com.mcsunnyside.QSAddonAreaShop;
+package com.mcsunnyside.qsareashop;
 
 
 import org.bukkit.Bukkit;
