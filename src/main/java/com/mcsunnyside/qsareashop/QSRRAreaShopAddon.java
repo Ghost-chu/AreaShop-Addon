@@ -12,8 +12,6 @@ import org.maxgamer.quickshop.Database.DatabaseHelper;
 import org.maxgamer.quickshop.Shop.Shop;
 import org.maxgamer.quickshop.Shop.ShopCreateEvent;
 import org.maxgamer.quickshop.Shop.ShopPreCreateEvent;
-import org.maxgamer.quickshop.Util.Util;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,22 +50,18 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 			for (RentRegion rentRegion : regions) {	
 				if(rentRegion.getRenter()!=null&&rentRegion.getRenter().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same renter.");	
 					break;	
 				}	
 				if(rentRegion.getOwner()!=null&&rentRegion.getOwner().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same owner.");	
 					break;	
 				}	
 				if(rentRegion.getLandlord()!=null&&rentRegion.getLandlord().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same landlord.");	
 					break;	
 				}	
 			}	
 			if(!passTheRegionCheck && !e.getPlayer().hasPermission("quickshop.addon.areashop.bypass")) {	
-				Util.debugLog("Not passed check for player "+player.toString()+" createing request.");	
 				e.setCancelled(true);;	
 			}	
 	}
@@ -79,22 +73,18 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 			for (RentRegion rentRegion : regions) {	
 				if(rentRegion.getRenter()!=null&&rentRegion.getRenter().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same renter.");	
 					break;	
 				}	
 				if(rentRegion.getOwner()!=null&&rentRegion.getOwner().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same owner.");	
 					break;	
 				}	
 				if(rentRegion.getLandlord()!=null&&rentRegion.getLandlord().toString().equals(player.toString())) {	
 					passTheRegionCheck=true;	
-					Util.debugLog("Passed check: Same landlord.");	
 					break;	
 				}	
 			}	
-			if(!passTheRegionCheck && !e.getPlayer().hasPermission("quickshop.addon.areashop.bypass")) {	
-				Util.debugLog("Not passed check for player "+player.toString()+" createing request.");	
+			if(!passTheRegionCheck && !e.getPlayer().hasPermission("quickshop.addon.areashop.bypass")) {		
 				e.setCancelled(true);;	
 			}	
 	}
@@ -118,9 +108,9 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 		minZ = areaMinVector.getBlockZ();
 		maxZ = areaMaxVector.getBlockZ();
 		}catch (Exception ex) {
-			this.getLogger().warning("You are using not incompatible AreaShop, this feature will cannot working!!!");
-			this.getLogger().warning("Please use 2.5.0#271 or higher build!");
-			this.getLogger().warning("You can download our recommend AreaShop build at there: https://github.com/Ghost-chu/QuickShop-Reremake/raw/master/lib/AreaShop.jar");
+			getLogger().warning("You are using not incompatible AreaShop, this feature will cannot working!!!");
+			getLogger().warning("Please use 2.5.0#271 or higher build!");
+			getLogger().warning("You can download our recommend AreaShop build at there: https://github.com/Ghost-chu/QuickShop-Reremake/raw/master/lib/AreaShop.jar");
 			return;
 		}
 		Iterator<Shop> shops = qs.getShopManager().getShopIterator();
@@ -141,7 +131,6 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 				}
 			}
 			for (Shop removeShop : waitingRemove) {
-				Util.debugLog("Removed shop at:["+shop.getLocation().toString()+"] cause AreaShop region unrented!");
 				removeShop.delete();
 				try {
 					DatabaseHelper.removeShop(qs.getDB(), shop.getLocation().getBlockX(), shop.getLocation().getBlockY(), shop.getLocation().getBlockZ(), shop.getLocation().getWorld().getName());
