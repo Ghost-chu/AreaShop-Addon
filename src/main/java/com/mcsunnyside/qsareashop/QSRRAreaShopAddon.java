@@ -35,7 +35,7 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 		try {
 			QuickShop.getVersion();
 		}catch (Exception e) {
-			getLogger().severe("QSRR WorldGuard Addon only can support under QuickShop-Reremake by Ghost_chu, we can't promise it can working perfactly under other forks");
+			getLogger().severe("QSRR AreaShop Addon only can support under QuickShop-Reremake by Ghost_chu, we can't promise it can working perfactly under other forks");
 		}
 		saveDefaultConfig();
 		getLogger().info("Successfully loaded QSRR's AreaShop addon.");
