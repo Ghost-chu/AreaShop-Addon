@@ -36,7 +36,7 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 		try {
 			QuickShop.getVersion();
 		}catch (Exception e) {
-			getLogger().severe("QSRR AreaShop Addon only can running under QuickShop-Reremake 1.3.3+ by Ghost_chu.");
+			getLogger().severe("QSRR AreaShop Addon only can running under QuickShop-Reremake by Ghost_chu.");
 			fail2load=true;
 			Bukkit.getPluginManager().disablePlugin(this);
 		}finally {
