@@ -2,7 +2,7 @@ name: QSRRAreaShopAddon
 main: com.mcsunnyside.qsareashop.QSRRAreaShopAddon
 version: 0.0.1-SNAPSHOT
 authors: [Ghost_chu]
-description: QSRR's Towny Addon
-depend: [QuickShop,Towny]
+description: QSRR's AreaShop Addon
+depend: [QuickShop,AreaShop]
 
 api-version: 1.13

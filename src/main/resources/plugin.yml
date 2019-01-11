@@ -2,7 +2,12 @@ name: ${name}
 main: ${package}.${name}
 version: ${version}
 authors: [Ghost_chu]
-description: QSRR's Towny Addon
-depend: [QuickShop,Towny]
+description: QSRR's AreaShop Addon
+depend: [QuickShop,AreaShop]
 
 api-version: 1.13
+
+permissions:
+    quickshop.addon.areashop.bypass:
+        description: Allows a player create shop out of areashop region
+        default: op
