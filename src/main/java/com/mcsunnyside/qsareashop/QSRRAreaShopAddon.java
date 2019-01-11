@@ -9,9 +9,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import org.maxgamer.quickshop.QuickShop;
 import org.maxgamer.quickshop.Database.DatabaseHelper;
-import org.maxgamer.quickshop.Events.ShopCreateEvent;
-import org.maxgamer.quickshop.Events.ShopPreCreateEvent;
 import org.maxgamer.quickshop.Shop.Shop;
+import org.maxgamer.quickshop.Shop.ShopCreateEvent;
+import org.maxgamer.quickshop.Shop.ShopPreCreateEvent;
 import org.maxgamer.quickshop.Util.Util;
 
 import java.sql.SQLException;
