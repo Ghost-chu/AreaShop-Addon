@@ -1,0 +1,8 @@
+name: ${name}
+main: ${package}.${name}
+version: ${version}
+authors: [Ghost_chu]
+description: QSRR's Towny Addon
+depend: [QuickShop,Towny]
+
+api-version: 1.13
