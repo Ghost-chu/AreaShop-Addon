@@ -2,21 +2,26 @@ package com.mcsunnyside.qsareashop;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 import org.maxgamer.quickshop.QuickShop;
 import org.maxgamer.quickshop.Database.DatabaseHelper;
+import org.maxgamer.quickshop.Events.ShopCreateEvent;
+import org.maxgamer.quickshop.Events.ShopPreCreateEvent;
 import org.maxgamer.quickshop.Shop.Shop;
 import org.maxgamer.quickshop.Util.Util;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import me.wiefferink.areashop.AreaShop;
 import me.wiefferink.areashop.events.notify.UnrentedRegionEvent;
+import me.wiefferink.areashop.regions.RentRegion;
 
 public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 	boolean fail2load = false;
@@ -48,6 +53,60 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 	public void onDisable() {
 		if(fail2load)
 			return;
+	}
+	@EventHandler
+	public void createShop(ShopPreCreateEvent e) {
+			Player player = e.getPlayer();
+			List<RentRegion> regions = me.wiefferink.areashop.tools.Utils.getImportantRentRegions(e.getLocation());	
+			boolean passTheRegionCheck = false;	
+			for (RentRegion rentRegion : regions) {	
+				if(rentRegion.getRenter()!=null&&rentRegion.getRenter().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same renter.");	
+					break;	
+				}	
+				if(rentRegion.getOwner()!=null&&rentRegion.getOwner().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same owner.");	
+					break;	
+				}	
+				if(rentRegion.getLandlord()!=null&&rentRegion.getLandlord().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same landlord.");	
+					break;	
+				}	
+			}	
+			if(!passTheRegionCheck && !e.getPlayer().hasPermission("quickshop.addon.areashop.bypass")) {	
+				Util.debugLog("Not passed check for player "+player.toString()+" createing request.");	
+				e.setCancelled(true);;	
+			}	
+	}
+	@EventHandler
+	public void createShop(ShopCreateEvent e) {
+			Player player = e.getPlayer();
+			List<RentRegion> regions = me.wiefferink.areashop.tools.Utils.getImportantRentRegions(e.getShop().getLocation());	
+			boolean passTheRegionCheck = false;	
+			for (RentRegion rentRegion : regions) {	
+				if(rentRegion.getRenter()!=null&&rentRegion.getRenter().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same renter.");	
+					break;	
+				}	
+				if(rentRegion.getOwner()!=null&&rentRegion.getOwner().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same owner.");	
+					break;	
+				}	
+				if(rentRegion.getLandlord()!=null&&rentRegion.getLandlord().toString().equals(player.toString())) {	
+					passTheRegionCheck=true;	
+					Util.debugLog("Passed check: Same landlord.");	
+					break;	
+				}	
+			}	
+			if(!passTheRegionCheck && !e.getPlayer().hasPermission("quickshop.addon.areashop.bypass")) {	
+				Util.debugLog("Not passed check for player "+player.toString()+" createing request.");	
+				e.setCancelled(true);;	
+			}	
 	}
 	@EventHandler
 	public void unRentedArea(UnrentedRegionEvent e) {
