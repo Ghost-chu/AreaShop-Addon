@@ -24,7 +24,6 @@ import me.wiefferink.areashop.events.notify.UnrentedRegionEvent;
 import me.wiefferink.areashop.regions.RentRegion;
 
 public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
-	boolean fail2load = false;
 	QuickShop qs = null;
 	AreaShop areaShop = null;
 	@Override
@@ -36,23 +35,14 @@ public class QSRRAreaShopAddon extends JavaPlugin implements Listener {
 		try {
 			QuickShop.getVersion();
 		}catch (Exception e) {
-			getLogger().severe("QSRR AreaShop Addon only can running under QuickShop-Reremake by Ghost_chu.");
-			fail2load=true;
-			Bukkit.getPluginManager().disablePlugin(this);
-		}finally {
-			if(fail2load)
-				return;
+			getLogger().severe("QSRR WorldGuard Addon only can support under QuickShop-Reremake by Ghost_chu, we can't promise it can working perfactly under other forks");
 		}
-		if(fail2load)
-			return;
 		saveDefaultConfig();
 		getLogger().info("Successfully loaded QSRR's AreaShop addon.");
 		
 	}
 	@Override
 	public void onDisable() {
-		if(fail2load)
-			return;
 	}
 	@EventHandler
 	public void createShop(ShopPreCreateEvent e) {
