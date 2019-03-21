@@ -73,9 +73,9 @@
 			<systemPath>${basedir}/lib/QuickShop-Reremake 1.3.3.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>com.palmergames</groupId>
-			<artifactId>Towny</artifactId>
-			<version>2.5.0#271</version>
+			<groupId>me.wiefferink</groupId>
+			<artifactId>AreaShop</artifactId>
+			<version>2.6.0</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/AreaShop.jar</systemPath>
 		</dependency>
