@@ -1,11 +1,11 @@
 name: QSRRAreaShopAddon
 main: com.mcsunnyside.qsareashop.QSRRAreaShopAddon
-version: 0.0.1-SNAPSHOT
+version: 0.0.2-SNAPSHOT
 authors: [Ghost_chu]
 description: QSRR's AreaShop Addon
 depend: [QuickShop,AreaShop]
 
-api-version: 1.13
+api-version: 1.16
 
 permissions:
     quickshop.addon.areashop.bypass:
